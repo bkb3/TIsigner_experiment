@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="initial-scale=1, shrink-to-fit=no, width=device-width" name="viewport">
+  <meta name=description content="TIsigner experiment">
+  <meta name=author content="Bikash Kumar Bhandari, Chun Shem Lim, Paul P Gardner">
+  <meta name=theme-color content=#355664 />
+  <meta name=keywords
+    content="RNA, protein, protein domains, gene optimisation, PCR, simulated annealing, translation initiation, accessibility, opening energy, PSI Biology, Protein Structure Initiative, recombinant protein expression, heterelogous protein expression, E coli, Escherichia coli, Pichia pastoris, MBIE, Ministry of Business Innovation and Employment, Callaghan Innovation, UTR, promoter, mRNA">
+  <meta name="google-site-verification" content="hZjxk7-ZjGgAyU5T6EbNunCaKL_gYwXerOs368wozvA" />
+  <title>TIsigner experiment</title>
+  <link rel=icon href=static/images/favicon.png type=image/png sizes=16x16 />
+
+
+  <meta property="og:locale" , content="en_NZ" />
+  <meta property="og:title" , content="SoDoPE: Soluble Domain for Protein Expression" />
+  <meta property="og:description" , content="Optimise the solubility of your protein sequences using smarter tools and algorithms!" />
+  <meta property="og:image" , content="https://tisigner.otago.ac.nz/static/images/sodope_og.png" />
+
+  <meta property="twitter:card" , content="summary" />
+  <meta property="twitter:title" , content="SoDoPE: Soluble Domain for Protein Expression" />
+  <meta property="twitter:description" , content="Optimise the solubility of your protein sequences using smarter tools and algorithms!" />
+  <meta property="twitter:image" , content="https://tisigner.otago.ac.nz/static/images/sodope_og.jpg" />
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!--script async src="https://www.googletagmanager.com/gtag/js?id=UA-153760535-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153760535-1');
+</script-->
+
+
+
+
+
+  <!-- CSS -->
+  <!-- Add Material font (Roboto) and Material icon as needed -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i|Roboto+Mono:300,400,700|Roboto+Slab:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Add Material CSS, replace Bootstrap CSS -->
+  <link href="static/css/material/material.min.css" rel="stylesheet">
+  <link href="static/css/waves/waves.min.css" rel="stylesheet">
+  <link href="static/css/nouislider/nouislider.css" rel="stylesheet">
+  <link href="static/css/sodope/sodope.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <!-- Then Material JavaScript on top of Bootstrap JavaScript -->
+  <script src="static/js/material/material.min.js"></script>
+  <!--script src="static/js/waves/waves.min.js"></script-->
+  <script src="static/js/plotly/plotly-latest.min.js"></script>
+  <!--script src='https://cdn.plot.ly/plotly-latest.min.js'></script-->
+  <!--script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js> </script> <script src=https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js> </script> <script src="static/js/nouislider/nouislider.min.js"></script>
+    <script src="static/js/nouislider/wNumb.js"></script-->
+
+
+  <nav class="navbar navbar-dark navbar-fixed-top" style="background-color: #355664;">
+    <a class="navbar-brand">
+      <span class="font-weight-bold">TI</span><span class="font-weight-bold" style="color:#EDA604">signer</span>&nbsp; Experiment
+    </a>
+    <!--a class="btn btn-flat-light" data-toggle=modal href=#quick-help-modal id='faq-btn'>FAQ
+            <i class="material-icons">help</i></a-->
+  </nav>
+
+  <main>
+
+    <div class="container-fluid" style="padding: 40px;">
+      <div class="p-5 mb-5">
+        <div class="col-auto ">
+
+          <div class="row">
+            <div class="col">
+
+              <div class="card text-left shadow-4">
+                <div id="graph">
+                  <script>
+                    $(document).ready(function() {
+
+                      $('#timeRange').val(0);
+                      $('.floating-label .custom-select, .floating-label .form-control').floatinglabel();
+                      //Waves.attach('.btn');
+                      //Waves.init();
+                    })
+
+
+                    let times = ['0 h ', '0 h 10 min', '0 h 20 min', '0 h 30 min', '0 h 40 min',
+                      '0 h 50 min', '1 h ', '1 h 10 min', '1 h 20 min', '1 h 30 min',
+                      '1 h 40 min', '1 h 50 min', '2 h ', '2 h 10 min', '2 h 20 min',
+                      '2 h 30 min', '2 h 40 min', '2 h 50 min', '3 h ', '3 h 10 min',
+                      '3 h 20 min', '3 h 30 min', '3 h 40 min', '3 h 50 min', '4 h ',
+                      '4 h 10 min', '4 h 20 min', '4 h 30 min', '4 h 40 min', '4 h 50 min',
+                      '5 h ', '5 h 10 min', '5 h 20 min', '5 h 30 min', '5 h 40 min',
+                      '5 h 50 min', '6 h ', '6 h 10 min', '6 h 20 min', '6 h 30 min',
+                      '6 h 40 min', '6 h 50 min', '7 h ', '7 h 10 min', '7 h 20 min',
+                      '7 h 30 min', '7 h 40 min', '7 h 50 min', '8 h '
+                    ]
+
+                    let scores = [5.78,
+7.07,
+9.67,
+32.09,
+33.2,
+37.81,
+48.39,
+55.67,
+57.84,
+62.89,
+70.16,
+71.18,
+75.2,
+95.43,
+96.72,
+97.75,
+
+                    ]
+
+
+
+
+                    function plot_data() {
+                      let i = !$('#timeRange').val() ? 0 : $('#timeRange').val()
+                      var d = []
+                      var names = ['First', 'Second', 'Third']
+                      var colors = ['#1f77b4', '#ff7f0e', '#d62728']
+                      for (let j = 1; j <= 3; j++) {
+                        Plotly.d3.csv('static/data/' + j + '.csv', (err, rows) => {
+                          let fl = []
+                          $.each(rows, function(index, item) {
+                            fl.push(item[times[i]])
+                          })
+                          var data = {
+                            mode: 'line',
+                            name: names[j - 1] + ' replicate',
+                            x: scores,
+                            y: fl,
+                            marker: {
+                              color: colors[j - 1],
+                            },
+                            line: {
+                              // 'shape': 'spline',
+                              // 'smoothing': 1.3
+                            }
+                          }
+                          d.push(data)
+
+                          var layout = {
+                            title: 'Time: ' + times[i] + ' post induction',
+                            font: {
+                              size: 14
+                            },
+                            yaxis: {
+                              title: 'Fluorescence normalised by native GFP'
+                            },
+                            xaxis: {
+                              title: 'Opening Energy (kcal/mol)'
+                            }
+                          }
+
+                          var config = {
+                            responsive: true,
+                            'displayModeBar': false
+                          }
+
+                          Plotly.newPlot('graph', d, layout, config)
+                        })
+                      }
+
+
+                    }
+
+
+
+                    plot_data()
+                  </script>
+
+
+
+                </div>
+              </div>
+              <hr />
+              <div>
+                <label for="timeRange">Use the slider to see data at different times.</label>
+                <input type="range" class="custom-range" id="timeRange" min="0" max="48" onClick="plot_data()" val=0>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </main>
+</body>
+
+</html>
