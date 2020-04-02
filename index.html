@@ -15,7 +15,6 @@
   <title>TIsigner experiment</title>
   <link rel=icon href=static/images/favicon.png type=image/png sizes=16x16 />
 
-
   <meta property="og:locale" , content="en_NZ" />
   <meta property="og:title" , content="TIsigner experiment" />
   <meta property="og:description" , content="Data analysis for TIsigner experiment" />
@@ -26,7 +25,6 @@
   <meta property="twitter:description" , ccontent="Data analysis for TIsigner experiment" />
   <meta property="twitter:image" , content="https://tisigner.otago.ac.nz/static/images/sodope_og.jpg" />
 
-
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <!--script async src="https://www.googletagmanager.com/gtag/js?id=UA-153760535-1"></script>
 <script>
@@ -36,10 +34,6 @@
 
   gtag('config', 'UA-153760535-1');
 </script-->
-
-
-
-
 
   <!-- CSS -->
   <!-- Add Material font (Roboto) and Material icon as needed -->
@@ -68,7 +62,6 @@
   <!--script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js> </script> <script src=https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js> </script> <script src="static/js/nouislider/nouislider.min.js"></script>
     <script src="static/js/nouislider/wNumb.js"></script-->
 
-
   <nav class="navbar navbar-dark navbar-fixed-top" style="background-color: #355664;">
     <a class="navbar-brand">
       <span class="font-weight-bold">TI</span><span class="font-weight-bold" style="color:#EDA604">signer</span>&nbsp; Experiment
@@ -93,23 +86,27 @@
             </div>
 
             <div class="col-md-4">
-              <div class="card text-left shadow-4">
-                <div id="bar"></div>
-                  <!-- <div class="card-body">
-                  textt
-                </div> -->
-                </div>
+                <div class="card text-left shadow-4">
+                  <div id="bar" style="height:225px;">
+                  </div>
+                  <br />
+                  <div id="heatmap" style="height:225px;">
+                  </div>
               </div>
             </div>
 
           </div>
+
           <hr />
+
           <div>
             <label for="timeRange">Use the slider to see data at different times.</label>
             <input type="range" class="custom-range" id="timeRange" min="0" max="48" val=0>
           </div>
 
         </div>
+      </div>
+    </div>
 
   </main>
 </body>
