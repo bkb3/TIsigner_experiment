@@ -135,7 +135,7 @@ function plot_bar() {
 
 
   var layout = {
-    title: 'Correlation between Fluorescence and <br> opening energy ',
+    title: 'Correlation between <br> Fluorescence and <br> opening energy ',
     font: {
       size: 12
     },
