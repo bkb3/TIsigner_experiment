@@ -169,7 +169,3 @@ function show_plots(){
 }
 
 
-$('#timeRange').mousemove(function(event, ui) {
-	console.log($('#timeRange').val())
-    show_plots()
-});
