@@ -47,9 +47,9 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Add Material CSS, replace Bootstrap CSS -->
   <link href="static/css/material/material.min.css" rel="stylesheet">
-  <link href="static/css/waves/waves.min.css" rel="stylesheet">
+  <!-- <link href="static/css/waves/waves.min.css" rel="stylesheet">
   <link href="static/css/nouislider/nouislider.css" rel="stylesheet">
-  <link href="static/css/sodope/sodope.css" rel="stylesheet">
+  <link href="static/css/sodope/sodope.css" rel="stylesheet"> -->
 
 </head>
 
@@ -63,7 +63,8 @@
   <script src="static/js/material/material.min.js"></script>
   <!--script src="static/js/waves/waves.min.js"></script-->
   <script src="static/js/plotly/plotly-latest.min.js"></script>
-  <!--script src='https://cdn.plot.ly/plotly-latest.min.js'></script-->
+  <!-- <script src='https://cdn.plot.ly/plotly-latest.min.js'></script> -->
+  <script src="static/js/analysis.js"></script>
   <!--script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js> </script> <script src=https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js> </script> <script src="static/js/nouislider/nouislider.min.js"></script>
     <script src="static/js/nouislider/wNumb.js"></script-->
 
@@ -83,124 +84,32 @@
         <div class="col-auto ">
 
           <div class="row">
-            <div class="col">
 
+            <div class="col">
               <div class="card text-left shadow-4">
                 <div id="graph">
-                  <script>
-                    $(document).ready(function() {
-
-                      $('#timeRange').val(0);
-                      $('.floating-label .custom-select, .floating-label .form-control').floatinglabel();
-                      //Waves.attach('.btn');
-                      //Waves.init();
-                    })
-
-
-                    let times = ['0 h ', '0 h 10 min', '0 h 20 min', '0 h 30 min', '0 h 40 min',
-                      '0 h 50 min', '1 h ', '1 h 10 min', '1 h 20 min', '1 h 30 min',
-                      '1 h 40 min', '1 h 50 min', '2 h ', '2 h 10 min', '2 h 20 min',
-                      '2 h 30 min', '2 h 40 min', '2 h 50 min', '3 h ', '3 h 10 min',
-                      '3 h 20 min', '3 h 30 min', '3 h 40 min', '3 h 50 min', '4 h ',
-                      '4 h 10 min', '4 h 20 min', '4 h 30 min', '4 h 40 min', '4 h 50 min',
-                      '5 h ', '5 h 10 min', '5 h 20 min', '5 h 30 min', '5 h 40 min',
-                      '5 h 50 min', '6 h ', '6 h 10 min', '6 h 20 min', '6 h 30 min',
-                      '6 h 40 min', '6 h 50 min', '7 h ', '7 h 10 min', '7 h 20 min',
-                      '7 h 30 min', '7 h 40 min', '7 h 50 min', '8 h '
-                    ]
-
-                    let scores = [5.78,
-7.07,
-9.67,
-32.09,
-33.2,
-37.81,
-48.39,
-55.67,
-57.84,
-62.89,
-70.16,
-71.18,
-75.2,
-95.43,
-96.72,
-97.75,
-
-                    ]
-
-
-
-
-                    function plot_data() {
-                      let i = !$('#timeRange').val() ? 0 : $('#timeRange').val()
-                      var d = []
-                      var names = ['First', 'Second', 'Third']
-                      var colors = ['#1f77b4', '#ff7f0e', '#d62728']
-                      for (let j = 1; j <= 3; j++) {
-                        Plotly.d3.csv('static/data/' + j + '.csv', (err, rows) => {
-                          let fl = []
-                          $.each(rows, function(index, item) {
-                            fl.push(item[times[i]])
-                          })
-                          var data = {
-                            mode: 'line',
-                            name: names[j - 1] + ' replicate',
-                            x: scores,
-                            y: fl,
-                            marker: {
-                              color: colors[j - 1],
-                            },
-                            line: {
-                              // 'shape': 'spline',
-                              // 'smoothing': 1.3
-                            }
-                          }
-                          d.push(data)
-
-                          var layout = {
-                            title: 'Time: ' + times[i] + ' post induction',
-                            font: {
-                              size: 14
-                            },
-                            yaxis: {
-                              title: 'Fluorescence normalised by native GFP'
-                            },
-                            xaxis: {
-                              title: 'Opening Energy (kcal/mol)'
-                            }
-                          }
-
-                          var config = {
-                            responsive: true,
-                            'displayModeBar': false
-                          }
-
-                          Plotly.newPlot('graph', d, layout, config)
-                        })
-                      }
-
-
-                    }
-
-
-
-                    plot_data()
-                  </script>
-
-
-
                 </div>
               </div>
-              <hr />
-              <div>
-                <label for="timeRange">Use the slider to see data at different times.</label>
-                <input type="range" class="custom-range" id="timeRange" min="0" max="48" onClick="plot_data()" val=0>
-              </div>
-
             </div>
+
+            <div class="col-md-5">
+              <div class="card text-left shadow-4">
+                <div id="bar"></div>
+                  <!-- <div class="card-body">
+                  textt
+                </div> -->
+                </div>
+              </div>
+            </div>
+
           </div>
+          <hr />
+          <div>
+            <label for="timeRange">Use the slider to see data at different times.</label>
+            <input type="range" class="custom-range" id="timeRange" min="0" max="48" onClick="show_plots()" val=0>
+          </div>
+
         </div>
-      </div>
 
   </main>
 </body>
