@@ -1,0 +1,9 @@
+.jumbotron-background {
+  background-color: #9c27b0;/*#0d47a1; /*#03A9F4;#9c27b0;
+  background-image: url("../../../static/images/material_bg.jpg");*/
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  padding-top: 7rem;
+}
