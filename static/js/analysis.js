@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('#timeRange').val(0);
+  // $('#timeRange1').val(0);
   $('.floating-label .custom-select, .floating-label .form-control').floatinglabel();
   //Waves.attach('.btn');
   //Waves.init();
@@ -10,6 +10,26 @@ $(document).ready(function() {
     //console.log($('#timeRange').val())
     show_plots()
   });
+
+  plot_raw_data1()
+
+  $('#timeRange1').on('input', function(){
+    plot_raw_data1()
+  })
+
+
+  plot_raw_data2()
+
+  $('#timeRange2').on('input', function(){
+    plot_raw_data2()
+  })
+
+
+    plot_raw_data3()
+
+    $('#timeRange3').on('input', function(){
+      plot_raw_data3()
+    })
 
 })
 
@@ -1039,7 +1059,7 @@ function plot_data() {
         },
         yaxis: {
           title: 'Fluorescence normalised by native GFP',
-          range: [0.2, 1.3]
+          range: [0.35, 1.3]
         },
         xaxis: {
           title: 'Expression score'

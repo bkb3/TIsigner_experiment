@@ -59,6 +59,7 @@
   <script src="static/js/plotly/plotly-latest.min.js"></script>
   <!-- <script src='https://cdn.plot.ly/plotly-latest.min.js'></script> -->
   <script src="static/js/analysis.js"></script>
+  <script src="static/js/raw.js"></script>
   <!--script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js> </script> <script src=https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js> </script> <script src="static/js/nouislider/nouislider.min.js"></script>
     <script src="static/js/nouislider/wNumb.js"></script-->
 
@@ -73,38 +74,183 @@
   <main>
 
     <div class="container-fluid" style="padding: 40px;">
+
+
+
       <div class="p-5 mb-5">
-        <div class="col-auto ">
 
-          <div class="row">
+        <div class="row ">
+          <!--justify-content-center-->
+          <div>
+            <h2>About the experiment</h2>
+          </div>
+          </div>
 
-            <div class="col">
-              <div class="card text-left shadow-4">
-                <div id="graph">
+            <p>This page shows the information and data analysis from the experiments done using TIsigner.
+              The objective was to show that mRNA accessibility can be used to tune the protein expression.
+              The steps were:</p>
+            <ul>
+              <li>15 sequences were designed on the increasing order of expression scores from TIsigner. The sequences and their opening energy (accessibility) can be viewed <a
+                  href="https://docs.google.com/spreadsheets/d/1aEI6z2ClKeEpK3xA724xzrBkW0vZtEkvj2GV1M_8dTA/edit?ts=5cd4f70c#gid=1858298207">here</a>.</li>
+              <li>Experiments were prefomed at Callaghan Innovation by Daniela and Craig.</li>
+              <li>The protocol used is described <a href="static/docs/workflow.pdf">in this file</a>.</li>
+
+            </ul>
+            <p><h3>Click on a dataset to view the results.</h3></p>
+
+
+        <div class="row">
+          <div class="col-3">
+            <div class="list-group" id="list-tab" role="tablist">
+              <a class="list-group-item list-group-item-action active" id="biological-replicates-all-list" data-toggle="list" href="#biological-replicates-all" role="tab" aria-controls="home">All biological replicates</a>
+              <a class="list-group-item list-group-item-action" id="biological-replicates-1-list" data-toggle="list" href="#biological-replicates-1" role="tab" aria-controls="profile">Biological replicate #1</a>
+              <a class="list-group-item list-group-item-action" id="biological-replicates-2-list" data-toggle="list" href="#biological-replicates-2" role="tab" aria-controls="messages">Biological replicate #2</a>
+              <a class="list-group-item list-group-item-action" id="biological-replicates-3-list" data-toggle="list" href="#biological-replicates-3" role="tab" aria-controls="settings">Biological replicate #3</a>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="biological-replicates-all" role="tabpanel" aria-labelledby="list-home-list">
+                  <p>These plots show all three biological replicates at upto 8 hours post induction.<p>
+                <div class="col-auto ">
+
+                  <div>
+                    <label for="timeRange">Use the slider to see the data at different times.</label>
+                    <input type="range" class="custom-range" id="timeRange" min="0" max="48" val=0>
+                  </div>
+                  <hr />
+                  <div class="row">
+
+                    <div class="col">
+                      <div class="card text-left shadow-4">
+                        <div id="graph">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="card text-left shadow-4">
+                        <div id="bar" style="height:225px;">
+                        </div>
+                        <br />
+                        <div id="heatmap" style="height:225px;">
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+
+                </div>
+
+
+
+              </div>
+
+
+              <div class="tab-pane fade" id="biological-replicates-1" role="tabpanel" aria-labelledby="list-profile-list">
+                <p>This plot shows the mean of the three technical replicates in the first biological replicate. Blue dot is the native.</p>
+                <div class="col-auto ">
+
+                  <div>
+                    <label for="timeRange1">Use the slider to see the data at different times.</label>
+                    <input type="range" class="custom-range" id="timeRange1" min="0" max="125" val=0 onclick="plot_raw_data()">
+                  </div>
+                  <hr />
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <div class="card text-left shadow-4">
+                        <div id="graph1_fl" style="width:60vh;">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="card text-left shadow-4">
+                        <div id="graph1_od" style="width:60vh;">
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
                 </div>
               </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="card text-left shadow-4">
-                  <div id="bar" style="height:225px;">
+
+              <div class="tab-pane fade" id="biological-replicates-2" role="tabpanel" aria-labelledby="list-messages-list">
+                <p>This plot shows the mean of the three technical replicates in the second biological replicate. Blue dot is the native.</p>
+                <div class="col-auto ">
+
+                  <div>
+                    <label for="timeRange2">Use the slider to see the data at different times.</label>
+                    <input type="range" class="custom-range" id="timeRange2" min="0" max="125" val=0>
                   </div>
-                  <br />
-                  <div id="heatmap" style="height:225px;">
+                  <hr />
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <div class="card text-left shadow-4">
+                        <div id="graph2_fl" style="width:60vh;">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="card text-left shadow-4">
+                        <div id="graph2_od" style="width:60vh;">
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="tab-pane fade" id="biological-replicates-3" role="tabpanel" aria-labelledby="list-settings-list">
+
+                <p>This plot shows the mean of the three technical replicates in the third biological replicate. Blue dot is the native.</p>
+                <div class="col-auto ">
+
+                  <div>
+                    <label for="timeRange3">Use the slider to see the data at different times.</label>
+                    <input type="range" class="custom-range" id="timeRange3" min="0" max="125" val=0>
+                  </div>
+                  <hr />
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <div class="card text-left shadow-4">
+                        <div id="graph3_fl" style="width:60vh;">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="card text-left shadow-4">
+                        <div id="graph3_od" style="width:60vh;">
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
               </div>
             </div>
-
           </div>
-
-          <hr />
-
-          <div>
-            <label for="timeRange">Use the slider to see the data at different times.</label>
-            <input type="range" class="custom-range" id="timeRange" min="0" max="48" val=0>
-          </div>
-
         </div>
+
+
+
+
       </div>
     </div>
 
