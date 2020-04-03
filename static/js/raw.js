@@ -941,6 +941,88 @@ function plot_sequences(){
 
 }
 
+function plot_corrs(){
+  var data_corrs1 = {
+    name: 'First',
+    y: corr1.slice(0,125),
+    x: fl1_times.slice(0,125).map(function(v){
+      return v.split(".")[0];}),
+    type: 'scatter',
+    marker: {
+      color: '#1f77b4',
+    }
+    // mode: 'markers',
+    // text: ['1(Native)', 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,],
+    // marker: {
+    // size: 10,
+    // color: ['#1f77b4', 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,]
+  // }
+  }
+
+  var data_corrs2 = {
+    name: 'Second',
+    y: corr2.slice(0,125),
+    x: fl2_times.slice(0,125).map(function(v){
+      return v.split(".")[0];}),
+    type: 'scatter',
+    marker: {
+      color: '#ff7f0e',
+    }
+    // mode: 'markers',
+    // text: ['1(Native)', 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,],
+    // marker: {
+    // size: 10,
+    // color: ['#1f77b4', 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,]
+  // },
+  }
+
+  var data_corrs3 = {
+    name: 'Third',
+    y: corr3.slice(0,125),
+    x: fl3_times.slice(0,125).map(function(v){
+      return v.split(".")[0];}),
+    type: 'scatter',
+    marker: {
+      color: '#d62728',
+    }
+    // mode: 'markers',
+    // text: ['1(Native)', 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,],
+    // marker: {
+    // size: 10,
+    // color: ['#1f77b4', 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,]
+  // }
+  }
+
+    var layout = {
+      title: 'Correlation between GFP and expression scores',
+      font: {
+        size: 12
+      },
+      yaxis: {
+        title: "Spearman's rho",
+        // range:
+      },
+      xaxis: {
+        title: ''
+      },
+      margin: {
+        // l: 50,
+        // r: 40,
+        b: 100,
+        // t: 40
+      },
+    }
+
+  var config = {
+    responsive: true,
+    'displayModeBar': false
+  }
+
+  Plotly.newPlot('corrs', [data_corrs1, data_corrs2, data_corrs3], layout, config)
+
+
+
+}
 
 
 function plot_raw_data1() {

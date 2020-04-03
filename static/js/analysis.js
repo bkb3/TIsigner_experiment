@@ -32,6 +32,8 @@ $(document).ready(function() {
       plot_raw_data3()
     })
 
+plot_corrs()
+
 })
 
 let firstExp = {
@@ -1040,7 +1042,7 @@ function plot_data() {
       })
       var data = {
         mode: 'line',
-        name: names[j - 1] + ' replicate',
+        name: names[j - 1],
         x: scores,
         y: fl,
         marker: {
@@ -1120,7 +1122,7 @@ function plot_bar() {
     },
     yaxis: {
       title: "Spearman's Rho",
-      range: i >= 15 ? [0.0, 0.6] : [-0.8, 0.2]
+      range: i >= 15 ? [0.0, 0.6] : [-0.8, 0.6]
     },
     xaxis: {
       title: 'Replicates'
