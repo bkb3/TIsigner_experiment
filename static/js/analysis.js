@@ -4,6 +4,7 @@ $(document).ready(function() {
   $('.floating-label .custom-select, .floating-label .form-control').floatinglabel();
   //Waves.attach('.btn');
   //Waves.init();
+  plot_sequences()
   show_plots()
 
   $('#timeRange').on('input', function(event, ui) {
@@ -1063,7 +1064,13 @@ function plot_data() {
         },
         xaxis: {
           title: 'Expression score'
-        }
+        },
+        // margin: {
+        //   l: 50,
+        //   r: 5,
+        //   b: 40,
+        //   t: 40
+        // },
       }
 
       var config = {

@@ -897,6 +897,52 @@ for (let [key, value] of Object.entries(od3)) {
 }
 
 
+function plot_sequences(){
+  var data_seq = {
+    x: scores1,
+    y: [11.68, 21.68, 20.37, 18.8, 14.35, 14.23, 13.77, 12.84, 12.25, 12.08, 11.08, 10.99, 10.63, 7.41, 6.71, 5.56],
+    type: 'scatter',
+    mode: 'markers',
+    text: ['1(Native)', 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,],
+    marker: {
+    size: 10,
+    color: ['#1f77b4', 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,]
+  }
+  }
+
+    var layout = {
+      title: 'Designed sequences',
+      font: {
+        size: 12
+      },
+      yaxis: {
+        title: 'Opening energy (kcal/mol)',
+        // range:
+      },
+      xaxis: {
+        title: 'Expression score'
+      },
+      // margin: {
+      //   l: 50,
+      //   r: 40,
+      //   b: 40,
+      //   t: 40
+      // },
+    }
+
+  var config = {
+    responsive: true,
+    'displayModeBar': false
+  }
+
+  Plotly.newPlot('seqs', [data_seq], layout, config)
+
+
+
+}
+
+
+
 function plot_raw_data1() {
 
   let i = !$('#timeRange1').val() ? 0 : $('#timeRange1').val()
@@ -911,6 +957,8 @@ function plot_raw_data1() {
     size: 10,
     color: ['#1f77b4', 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1, 2,]
   }
+
+
   }
 
   var data_od = {
