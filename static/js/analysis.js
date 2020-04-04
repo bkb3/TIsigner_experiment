@@ -1026,7 +1026,7 @@ let scores = [5.78,
 ]
 
 
-
+let constru = [ '2 ', '3 ', '4 ', '5 ', '6 ', '7 ', '8 ', '9 ', '10 ', '1 (Native)', '11 ', '12 ', '13 ', '14 ', '15 ', '16 ',]
 
 
 function plot_data() {
@@ -1034,6 +1034,7 @@ function plot_data() {
   var d = []
   var names = ['First', 'Second', 'Third']
   var colors = ['#1f77b4', '#ff7f0e', '#d62728']
+
   for (let j = 1; j <= 3; j++) {
     Plotly.d3.csv('static/data/' + j + '.csv', (err, rows) => {
       let fl = []
@@ -1049,10 +1050,23 @@ function plot_data() {
           color: colors[j - 1],
         },
         line: {
-          // 'shape': 'spline',
-          // 'smoothing': 1.3
+          'shape': 'spline',
+          'smoothing': 0.4
         }
       }
+
+      // var data = {
+      //   type: 'bar',
+      //   name: names[j - 1],
+      //   x: constru.map(function (num, idx) {
+      //       return num + ' (' + scores[idx] + ')';
+      //     }),
+      //   y: fl,
+      //   marker: {
+      //     color: colors[j - 1],
+      //   },
+      // }
+
       d.push(data)
 
       var layout = {
@@ -1062,10 +1076,10 @@ function plot_data() {
         },
         yaxis: {
           title: 'Fluorescence normalised by native GFP',
-          range: [0.35, 1.3]
+          // range: [0.35, 1.3]
         },
         xaxis: {
-          title: 'Expression score'
+          title: 'Expression score',
         },
         // margin: {
         //   l: 50,
