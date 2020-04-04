@@ -994,7 +994,7 @@ function plot_corrs(){
   }
 
     var layout = {
-      title: 'Correlation between GFP and expression scores',
+      title: 'Correlation between GFP fluorescence  and expression scores',
       font: {
         size: 12
       },
