@@ -1076,7 +1076,7 @@ function plot_data() {
         },
         yaxis: {
           title: 'Fluorescence normalised by native GFP',
-          // range: [0.35, 1.3]
+          range: [0.35, 1.3]
         },
         xaxis: {
           title: 'Expression score',
