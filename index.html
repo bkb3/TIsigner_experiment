@@ -107,6 +107,8 @@
               <a class="list-group-item list-group-item-action" id="biological-replicates-1-list" data-toggle="list" href="#biological-replicates-1" role="tab" aria-controls="profile">Biological replicate #1</a>
               <a class="list-group-item list-group-item-action" id="biological-replicates-2-list" data-toggle="list" href="#biological-replicates-2" role="tab" aria-controls="messages">Biological replicate #2</a>
               <a class="list-group-item list-group-item-action" id="biological-replicates-3-list" data-toggle="list" href="#biological-replicates-3" role="tab" aria-controls="settings">Biological replicate #3</a>
+              <a class="list-group-item list-group-item-action" id="biological-replicates-4-list" data-toggle="list" href="#biological-replicates-4" role="tab" aria-controls="settings">Sept 17 (101-119)<span class="badge badge-info">New</span></a>
+              <a class="list-group-item list-group-item-action" id="biological-replicates-5-list" data-toggle="list" href="#biological-replicates-5" role="tab" aria-controls="settings">Sept 17 (120-138)<span class="badge badge-info">New</span></a>
               <a class="list-group-item list-group-item-action" id="correlations-list" data-toggle="list" href="#correlations" role="tab" aria-controls="settings">Correlation</a>
             </div>
           </div>
@@ -259,6 +261,72 @@
                 </div>
 
               </div>
+
+
+              <div class="tab-pane fade" id="biological-replicates-4" role="tabpanel" aria-labelledby="list-messages-list">
+                <p>This plot shows the mean of the three technical replicates in the sheet 101-119. Blue dot is the native.</p>
+                <div class="col-auto ">
+
+                  <div>
+                    <label for="timeRange4">Use the slider to see the data at different times.</label>
+                    <input type="range" class="custom-range" id="timeRange4" min="0" max="45" val=0>
+                  </div>
+                  <hr />
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <div class="card text-left shadow-4">
+                        <div id="graph4_fl" style="width:60vh;">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="card text-left shadow-4">
+                        <div id="graph4_od" style="width:60vh;">
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="tab-pane fade" id="biological-replicates-5" role="tabpanel" aria-labelledby="list-messages-list">
+                <p>This plot shows the mean of the three technical replicates in the sheet 120-138. Blue dot is the native.</p>
+                <div class="col-auto ">
+
+                  <div>
+                    <label for="timeRange4">Use the slider to see the data at different times.</label>
+                    <input type="range" class="custom-range" id="timeRange5" min="0" max="45" val=0>
+                  </div>
+                  <hr />
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <div class="card text-left shadow-4">
+                        <div id="graph5_fl" style="width:60vh;">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="card text-left shadow-4">
+                        <div id="graph5_od" style="width:60vh;">
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
 
               <div class="tab-pane fade show" id="correlations" role="tabpanel" aria-labelledby="list-home-list">
                 <p>Correlations between GFP fluorescence and expression scores<p>

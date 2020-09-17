@@ -31,6 +31,18 @@ $(document).ready(function() {
     $('#timeRange3').on('input', function(){
       plot_raw_data3()
     })
+  
+    plot_raw_data4()
+
+    $('#timeRange4').on('input', function(){
+      plot_raw_data4()
+    })
+
+    plot_raw_data5()
+
+    $('#timeRange5').on('input', function(){
+      plot_raw_data5()
+    })
 
 plot_corrs()
 
