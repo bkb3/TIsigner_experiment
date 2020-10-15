@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
   // $('#timeRange1').val(0);
   $('.floating-label .custom-select, .floating-label .form-control').floatinglabel();
@@ -6,53 +6,92 @@ $(document).ready(function() {
   //Waves.init();
   plot_sequences()
   show_plots()
+  if (!$('#corrTableCheckbox').prop('checked')) {
+    $('#corrTable').hide()
+  }
 
-  $('#timeRange').on('input', function(event, ui) {
+
+  $('#timeRange').on('input', function (event, ui) {
     //console.log($('#timeRange').val())
     show_plots()
   });
 
   plot_raw_data1()
 
-  $('#timeRange1').on('input', function(){
+  $('#timeRange1').on('input', function () {
     plot_raw_data1()
   })
 
 
   plot_raw_data2()
 
-  $('#timeRange2').on('input', function(){
+  $('#timeRange2').on('input', function () {
     plot_raw_data2()
   })
 
 
+  plot_raw_data3()
+
+  $('#timeRange3').on('input', function () {
     plot_raw_data3()
+  })
 
-    $('#timeRange3').on('input', function(){
-      plot_raw_data3()
-    })
+  plot_raw_data4()
 
+  $('#timeRange4').on('input', function () {
     plot_raw_data4()
+  })
 
-    $('#timeRange4').on('input', function(){
-      plot_raw_data4()
-    })
+  plot_raw_data5()
 
+  $('#timeRange5').on('input', function () {
     plot_raw_data5()
+  })
 
-    $('#timeRange5').on('input', function(){
-      plot_raw_data5()
-    })
+  plot_raw_data6()
 
+  $('#timeRange6').on('input', function () {
     plot_raw_data6()
+  })
 
-    $('#timeRange6').on('input', function(){
-      plot_raw_data6()
-    })
 
-plot_corrs()
+  plot_raw_data7()
+  $('#timeRange7').on('input', function () {
+    plot_raw_data7()
+  })
+  $('#uninducedCheckbox').on('input', function () {
+    plot_raw_data7()
+
+  })
+
+  $('#inducedCheckbox').on('input', function () {
+    plot_raw_data7()
+
+  })
+
+  $('#GFPCheckbox').on('input', function () {
+    plot_raw_data7();
+
+  })
+
+  $('#RFPCheckbox').on('input', function () {
+    plot_raw_data7()
+
+  })
+
+  $('#corrTableCheckbox').on('input', function () {
+    $('#corrTable').toggle()
+  })
+
+
+  plot_corrs()
+
+
+  // Oct 15
+  plot_corrs_new()
 
 })
+
 
 let firstExp = {
   "0 h ": {
@@ -654,13 +693,13 @@ let thirdExp = {
 let corrs_f = []
 let corrs_s = []
 let corrs_t = []
-$.each(firstExp, function(_, obj) {
+$.each(firstExp, function (_, obj) {
   corrs_f.push(obj['Correlation'])
 })
-$.each(secondExp, function(_, obj) {
+$.each(secondExp, function (_, obj) {
   corrs_s.push(obj['Correlation'])
 })
-$.each(thirdExp, function(_, obj) {
+$.each(thirdExp, function (_, obj) {
   corrs_t.push(obj['Correlation'])
 })
 
@@ -1044,7 +1083,7 @@ let scores = [5.78,
 ]
 
 
-let constru = [ '2 ', '3 ', '4 ', '5 ', '6 ', '7 ', '8 ', '9 ', '10 ', '1 (Native)', '11 ', '12 ', '13 ', '14 ', '15 ', '16 ',]
+let constru = ['2 ', '3 ', '4 ', '5 ', '6 ', '7 ', '8 ', '9 ', '10 ', '1 (Native)', '11 ', '12 ', '13 ', '14 ', '15 ', '16 ',]
 
 
 function plot_data() {
@@ -1056,7 +1095,7 @@ function plot_data() {
   for (let j = 1; j <= 3; j++) {
     Plotly.d3.csv('static/data/' + j + '.csv', (err, rows) => {
       let fl = []
-      $.each(rows, function(index, item) {
+      $.each(rows, function (index, item) {
         fl.push(item[times[i]])
       })
       var data = {
