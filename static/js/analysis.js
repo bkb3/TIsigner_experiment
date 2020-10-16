@@ -79,6 +79,11 @@ $(document).ready(function () {
 
   })
 
+  $('#RatioCheckbox').on('input', function () {
+    plot_raw_data7()
+
+  })
+
   $('#corrTableCheckbox').on('input', function () {
     $('#corrTable').toggle()
   })

@@ -126,7 +126,7 @@
               <a class="list-group-item list-group-item-action" id="biological-replicates-5-list" data-toggle="list"
                 href="#biological-replicates-5" role="tab" aria-controls="settings">Sept 17 (120-138)</a>
               <a class="list-group-item list-group-item-action" id="biological-replicates-6-list" data-toggle="list"
-                href="#biological-replicates-6" role="tab" aria-controls="settings">Oct 6 (repeat 20-38+39-49)</a>
+                href="#biological-replicates-6" role="tab" aria-controls="settings">Oct 6 (repeat 120-138)</a>
               <a class="list-group-item list-group-item-action" id="biological-replicates-7-list" data-toggle="list"
                 href="#biological-replicates-7" role="tab" aria-controls="settings">Oct 15 <span
                   class="badge badge-info">New</span></a>
@@ -422,15 +422,19 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="GFPCheckbox" value="option3" checked>
+                    <input class="form-check-input" type="checkbox" id="GFPCheckbox" value="option3" >
                     <label class="form-check-label" for="GFPCheckbox">GFP</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="RFPCheckbox" value="option4" checked>
+                    <input class="form-check-input" type="checkbox" id="RFPCheckbox" value="option4" >
                     <label class="form-check-label" for="RFPCheckbox">RFP</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="corrTableCheckbox" value="option5">
+                    <input class="form-check-input" type="checkbox" id="RatioCheckbox" value="option5" checked>
+                    <label class="form-check-label" for="RatioCheckbox">GFP/RFP</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="corrTableCheckbox" value="option6">
                     <label class="form-check-label" for="corrTableCheckbox">See the correlation table</label>
                   </div>
 
@@ -456,6 +460,11 @@
                           <td id="unindRFPCorr"></td>
                           <td id="unindRFPpval"></td>
                         </tr>
+                        <tr id="uninducedRatiotr">
+                          <th scope="row">Uninduced GFP/RFP</th>
+                          <td id="unindRatioCorr"></td>
+                          <td id="unindRatiopval"></td>
+                        </tr>
                         <tr id="inducedGFPtr">
                           <th scope="row">Induced GFP</th>
                           <td id="indGFPCorr"></td>
@@ -465,6 +474,11 @@
                           <th scope="row">Induced RFP</th>
                           <td id="indRFPCorr"></td>
                           <td id="indRFPpval"></td>
+                        </tr>
+                        <tr id="inducedRatiotr">
+                          <th scope="row">Induced GFP/RFP</th>
+                          <td id="indRatioCorr"></td>
+                          <td id="indRatiopval"></td>
                         </tr>
                       </tbody>
                     </table>
