@@ -1000,7 +1000,7 @@ function plot_raw_data7() {
             title: (!$('#GFPCheckbox').prop('checked') &&
              !$('#RFPCheckbox').prop('checked') && $('#RatioCheckbox').prop('checked')) ? 'Relative Fluorescence': 'Raw Fluorescence',
             range: (!$('#GFPCheckbox').prop('checked') &&
-             !$('#RFPCheckbox').prop('checked') && $('#RatioCheckbox').prop('checked')) ? [0, 100]:[0, 300000]
+             !$('#RFPCheckbox').prop('checked') && $('#RatioCheckbox').prop('checked')) ? [0, 110]:[0, 300000]
           },
           xaxis: {
             title: 'Expression score'
